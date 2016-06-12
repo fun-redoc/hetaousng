@@ -1,0 +1,10 @@
+query with wildcard %25 stands for url encoded % for the LIKE DB word
+---------------------------------------------------------------------
+
+curl http://localhost:8080/api/projectStaffs/search/findByProjectNameLike?projectName=P%25
+
+
+create n:m join tabme entry
+---------------------------
+
+curl -i -H "Content-Type:application/json" -X POST -d '{"someInformation": "Project 2 Person 2", "project" : { "rel": "project", "href":"http://localhost:8080/api/projects/2"}, "person": {"rel": "person", "href":"http://localhost:8080/api/persons/2"}}' http://localhost:8080/api/projectStaffs 

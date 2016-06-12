@@ -21,7 +21,7 @@ public class Person extends AbstractEntity {
 
   private String firstname, lastname;
 
-  //@Column(unique = true, name="email")
+  @Column(unique = true, name="email")
   @Embedded
   private EmailAddress emailAddress;
 
@@ -29,7 +29,7 @@ public class Person extends AbstractEntity {
   private Set<Address> addresses = new HashSet<Address>();
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<ProjectStaff> projectStaff; // = new ArrayList<ProjectStaff>();
+  private List<ProjectStaff> projectStaff; 
 
   public Person(String firstname, String lastname, EmailAddress emailAddress) {
 
@@ -54,11 +54,6 @@ public class Person extends AbstractEntity {
 
   }
 
-//  public void addProjectStaff(ProjectStaff projectStaff) {
-//    //Assert.notNull(projectStaff);
-//    this.projectStaff.add(projectStaff);
-//    projectStaff.setPerson(this);
-//  }
   public List<ProjectStaff> getProjectStaff() {
     return Collections.unmodifiableList(projectStaff);
   }

@@ -20,5 +20,5 @@ public interface ProjectStaffRepository extends PagingAndSortingRepository<Proje
 	@Transactional(timeout = 10)
 	<S extends ProjectStaff> S save(S entity);
 
-	//List<ProjectStaff> findByProject(@Param("project") Project project);
+	List<ProjectStaff> findByProjectNameLike(@Param("projectName") String name);
 }

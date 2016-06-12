@@ -29,7 +29,7 @@ public class Person extends AbstractEntity {
   private Set<Address> addresses = new HashSet<Address>();
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<ProjectStaff> projectStaff = new ArrayList<ProjectStaff>();
+  private List<ProjectStaff> projectStaff; // = new ArrayList<ProjectStaff>();
 
   public Person(String firstname, String lastname, EmailAddress emailAddress) {
 
@@ -54,13 +54,16 @@ public class Person extends AbstractEntity {
 
   }
 
-  public void addProjectStaff(ProjectStaff projectStaff) {
-    //Assert.notNull(projectStaff);
-    this.projectStaff.add(projectStaff);
-    projectStaff.setPerson(this);
-  }
+//  public void addProjectStaff(ProjectStaff projectStaff) {
+//    //Assert.notNull(projectStaff);
+//    this.projectStaff.add(projectStaff);
+//    projectStaff.setPerson(this);
+//  }
   public List<ProjectStaff> getProjectStaff() {
     return Collections.unmodifiableList(projectStaff);
+  }
+  public void setProjectStaff(List<ProjectStaff> projectStaff) {
+    this.projectStaff = projectStaff;
   }
 
   public void addAddress(Address address) {

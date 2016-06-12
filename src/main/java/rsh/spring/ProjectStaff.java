@@ -40,7 +40,7 @@ public class ProjectStaff extends AbstractEntity {
   }
   public void setPerson(Person person) {
     this.person = person;
-    this.person.addProjectStaff(this);
+ //   this.person.addProjectStaff(this);
   }
 
   public String getSomeInformation() {
@@ -55,6 +55,6 @@ public class ProjectStaff extends AbstractEntity {
   }
   public void setProject(Project project) {
     this.project = project;
-    this.project.addProjectStaff(this);
+//    this.project.addProjectStaff(this);
   }
 }

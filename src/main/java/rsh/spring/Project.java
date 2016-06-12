@@ -22,7 +22,7 @@ public class Project extends AbstractEntity {
 	private String name;
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<ProjectStaff> projectStaff = new ArrayList<ProjectStaff>();
+  private List<ProjectStaff> projectStaff; // = new ArrayList<ProjectStaff>();
 
 	public Project(String name) {
 		Assert.hasText(name);
@@ -32,13 +32,16 @@ public class Project extends AbstractEntity {
 	protected Project() {
 	}
 
-  public void addProjectStaff(ProjectStaff projectStaff) {
-    Assert.notNull(projectStaff);
-    this.projectStaff.add(projectStaff);
-    projectStaff.setProject(this);
-  }
+//  public void addProjectStaff(ProjectStaff projectStaff) {
+//    Assert.notNull(projectStaff);
+//    this.projectStaff.add(projectStaff);
+//    projectStaff.setProject(this);
+//  }
   public List<ProjectStaff> getProjectStaff() {
-    return projectStaff;
+    return Collections.unmodifiableList(projectStaff);
+  }
+  public void setProjectStaff(List<ProjectStaff> projectStaff) {
+    this.projectStaff = projectStaff;
   }
 
 	public String getName() {

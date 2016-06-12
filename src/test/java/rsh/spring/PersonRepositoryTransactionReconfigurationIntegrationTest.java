@@ -13,15 +13,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ApplicationConfig.class)
 @DirtiesContext
-public class CustomerRepositoryTransactionReconfigurationIntegrationTest {
+public class PersonRepositoryTransactionReconfigurationIntegrationTest {
 
-	@Autowired CustomerRepository repository;
+	@Autowired PersonRepository repository;
 
 	@Test
 	public void executesRedeclaredMethodWithCustomTransactionConfiguration() {
 
-		Customer customer = new Customer("Dave", "Matthews");
-		Customer result = repository.save(customer);
+		Person customer = new Person("Dave", "Matthews");
+		Person result = repository.save(customer);
 
 		assertThat(result, is(notNullValue()));
 		assertThat(result.getId(), is(notNullValue()));

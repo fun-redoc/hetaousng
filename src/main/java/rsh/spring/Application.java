@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
   private final static Logger log = LoggerFactory.getLogger(Application.class);
-	@Autowired CustomerRepository repository;
+	@Autowired PersonRepository personsRepo;
+	@Autowired ProjectRepository projectsRepo;
+	@Autowired ProjectStaffRepository projectStaffRepo;
 
   public static void main(String[] args) {
       SpringApplication.run(Application.class, args);
@@ -20,14 +22,37 @@ public class Application {
 
   // preset the DB with test data
   @Bean
-  public CommandLineRunner demo(CustomerRepository repository) {
+  public CommandLineRunner demo(PersonRepository personsRepo,
+                                ProjectRepository projectRepo,
+                                ProjectStaffRepository projectStaffRepo) {
     return (args) -> {
-      // save a couple of customers
-      repository.save(new Customer("Jack", "Bauer"));
-      repository.save(new Customer("Chloe", "O'Brian"));
-      repository.save(new Customer("Kim", "Bauer"));
-      repository.save(new Customer("David", "Palmer"));
-      repository.save(new Customer("Michelle", "Dessler"));
+      // some persons
+      Person pers1 = new Person("Person1", "Name1", new EmailAddress("hallo1@halle.com"));
+      Person pers2 = new Person("Person2", "Name2", new EmailAddress("hallo2@halle.com"));
+      Person pers3 = new Person("Person3", "Name3", new EmailAddress("hallo3@halle.com"));
+      Person pers4 = new Person("Person4", "Name4", new EmailAddress("hallo4@halle.com"));
+      Person pers5 = new Person("Person5", "Name5", new EmailAddress("hallo5@halle.com"));
+
+      // some projects
+      Project proj1 = new Project("Project1");
+      Project proj2 = new Project("Project2");
+
+      // some project staff
+      ProjectStaff projectStaff = new ProjectStaff("Projekt1 Person1 first slot");
+
+      projectStaff.setProject(proj1);
+      projectStaff.setPerson(pers1);
+      
+      personsRepo.save(pers1);
+      personsRepo.save(pers2);
+      personsRepo.save(pers3);
+      personsRepo.save(pers4);
+      personsRepo.save(pers5);
+
+      projectRepo.save(proj1);
+      projectRepo.save(proj2);
+
+      projectStaffRepo.save(projectStaff);
     };
   }
 

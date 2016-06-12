@@ -24,7 +24,8 @@
     .controller("AppController", function($scope, $http, $location) {
       console.log("AppController");
       $scope.customers = [];
-      $http({method:'GET', url    : "/customers"})
+      $scope.addCustomer = addCustomer.bind($scope);
+      $http({method:'GET', url    : "/api/customers"})
         .success(function(data){
           angular.forEach(data._embedded.customers, 
                           function(customer){

@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 /**
  * A value object abstraction of an email address.
+ * taken from Oliver Gierke Tutorial
  * 
  * @author Oliver Gierke
  */

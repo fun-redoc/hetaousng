@@ -20,6 +20,7 @@
             <label>
               <input type="text" ng-model="person.lastname" ng-change="person.update()"/> {{person.lastname}}
             </label>
+            <a href="#Test/{{person._links.self.href}}">show details</a>
           </div>
           <div class="col-xs-3">
             <button class="pull-right btn btn-danger" type="button" title="Delete"
@@ -28,7 +29,9 @@
             </button>
           </div>
         </div>
-        <hr />
+        <hr/>
+        <div ng-view> </div>
+        <hr/>
         <div class="input-group">
           <input type="text" class="form-control" ng-model="newPerson.firstname" placeholder="Enter the firstname..." />
           <input type="text" class="form-control" ng-model="newPerson.lastname" placeholder="Enter the lastname..." />
@@ -43,6 +46,7 @@
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="./bower_components/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="./app/app.js"></script>
     <script type="text/javascript" src="./app/controllers.js"></script>
     <script type="text/javascript" src="./app/services.js"></script>

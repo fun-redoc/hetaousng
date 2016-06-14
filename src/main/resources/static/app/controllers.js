@@ -8,7 +8,7 @@
         var idx = $scope.persons.indexOf(this);
         console.log("success deleting data",$scope.persons, idx, data);
         $scope.persons.splice(idx,1);
-      }.bind(this).bind(this.bind(this)))
+      }.bind(this))
       .error(function(error) {
         // TODO notify user of error
         console.log("error", error);
@@ -21,10 +21,14 @@
   }
 
   var addPerson = function($http) {
-    console.log("add person", this);
+    console.log("add person", this.newPerson);
   }
 
   angular.module("myApp.controllers")
+    .controller("TestController", function($scope, $routeParams, $http, $location) {
+      console.log("TestController", $routeParams.link);
+      $scope.message = "TestController";
+    })
     .controller("AppController", function($scope, $http, $location) {
       console.log("AppController");
       $scope.persons = [];

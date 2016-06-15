@@ -28,7 +28,7 @@ public class Person extends AbstractEntity {
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<Address> addresses = new HashSet<Address>();
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy="person", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<ProjectStaff> projectStaff; // = new ArrayList<ProjectStaff>();
 
   public Person(String firstname, String lastname, EmailAddress emailAddress) {
@@ -59,12 +59,13 @@ public class Person extends AbstractEntity {
 //    this.projectStaff.add(projectStaff);
 //    projectStaff.setPerson(this);
 //  }
-  public List<ProjectStaff> getProjectStaff() {
-    return Collections.unmodifiableList(projectStaff);
-  }
-  public void setProjectStaff(List<ProjectStaff> projectStaff) {
-    this.projectStaff = projectStaff;
-  }
+//  public List<ProjectStaff> getProjectStaff() {
+//    return Collections.unmodifiableList(projectStaff);
+//  }
+//  public void setProjectStaff(List<ProjectStaff> projectStaff) {
+//    System.out.println("hallo in setProjectStaff");
+//    this.projectStaff = projectStaff;
+//  }
 
   public void addAddress(Address address) {
     Assert.notNull(address);

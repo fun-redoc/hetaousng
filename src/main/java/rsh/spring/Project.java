@@ -21,7 +21,7 @@ public class Project extends AbstractEntity {
 	@Column(unique = true)
 	private String name;
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy="project", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<ProjectStaff> projectStaff; // = new ArrayList<ProjectStaff>();
 
 	public Project(String name) {
@@ -37,12 +37,12 @@ public class Project extends AbstractEntity {
 //    this.projectStaff.add(projectStaff);
 //    projectStaff.setProject(this);
 //  }
-  public List<ProjectStaff> getProjectStaff() {
-    return Collections.unmodifiableList(projectStaff);
-  }
-  public void setProjectStaff(List<ProjectStaff> projectStaff) {
-    this.projectStaff = projectStaff;
-  }
+//  public List<ProjectStaff> getProjectStaff() {
+//    return Collections.unmodifiableList(projectStaff);
+//  }
+//  public void setProjectStaff(List<ProjectStaff> projectStaff) {
+//    this.projectStaff = projectStaff;
+//  }
 
 	public String getName() {
 		return name;

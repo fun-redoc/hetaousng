@@ -20,7 +20,7 @@
             <label>
               <input type="text" ng-model="person.lastname" ng-change="person.update()"/> {{person.lastname}}
             </label>
-            <a href="#Test/{{person._links.self.href}}">Projects</a>
+            <a href="#Test/{{'/api/projects/search/findByPerson?person='|urlencode}}{{person._links.self.href|urlencode}}">Projects</a>
           </div>
           <div class="col-xs-3">
             <button class="pull-right btn btn-danger" type="button" title="Delete"

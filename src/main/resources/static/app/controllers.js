@@ -26,8 +26,20 @@
 
   angular.module("myApp.controllers")
     .controller("TestController", function($scope, $routeParams, $http, $location) {
-      console.log("TestController", $routeParams.link);
+      var link = window.decodeURIComponent($routeParams.link);
+      console.log("TestController", link);
       $scope.message = "TestController";
+      $scope.projects = [];
+      $http({method:'GET', url: link})
+        .success(function(data) {
+          angular.forEach(data._embedded.projects, 
+                          function(project){
+                            $scope.projects.push(project);
+                          }); 
+        })
+        .error(function(error) {
+          $scope.error = error;
+        })
     })
     .controller("AppController", function($scope, $http, $location) {
       console.log("AppController");

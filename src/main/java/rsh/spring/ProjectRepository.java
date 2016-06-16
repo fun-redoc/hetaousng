@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 //@RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
@@ -21,4 +22,7 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, L
 	<S extends Project> S save(S entity);
 
 	Project findByName(@Param("name") String name);
+
+  @Query("select pr from Project pr JOIN pr.projectStaff ps JOIN ps.person pe  where pe = :person")
+  List findByPerson(@Param("person") Person person);
 }

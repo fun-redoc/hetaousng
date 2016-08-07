@@ -5,9 +5,13 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,5 +47,22 @@ public class PersonController {
           addressRepo.save(address);
 
         return new ResponseEntity<Person>(person, HttpStatus.OK);
+    }
+    @RequestMapping(path="/run", method=RequestMethod.POST, produces={"application/json"})
+    public Person postPersonAndAddress(@RequestBody  Person person) {
+       Person p = new Person("Foo","Bar");
+       personsRepo.save(p);
+       return p;
+    }
+    @RequestMapping(path="/test", method=RequestMethod.GET, produces={"application/json"})
+    //@RequestMapping(path="/test", method=RequestMethod.GET)
+    //@RequestMapping("/test")
+    public ResponseEntity test() {
+       return ResponseEntity.ok("{}");
+    }
+    //@RequestMapping(path="/api/testPost", method=RequestMethod.POST, consumes={"application/json"}, produces={"application/json"})
+    @RequestMapping(path="/api/testPost")
+    public ResponseEntity testPost() {
+       return ResponseEntity.ok("{}");
     }
 }

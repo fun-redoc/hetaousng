@@ -10,3 +10,7 @@ curl -i -H "Content-Type:application/json" -X POST -d '{"someInformation": "Proj
 
 
 curl -i -H "Content-Type:application/json" -X POST -d '{"someInformation": "Project 2 Person 2", "project" : { "rel": "project", "href":"http://localhost:8080/api/projects/2"}, "person": {"rel": "person", "href":"http://localhost:8080/api/persons/2"}}' http://localhost:8080/api/projectStaffs 
+
+call pecial controller method (GET) with parameters
+--------------------------------------------------
+curl http://localhost:8080/api/personAndAdress?firstName=Roland\&lastName=Stellmach\&country=Germany\&city=Braunschweig\&street=MyStreet 

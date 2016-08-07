@@ -27,11 +27,11 @@ public class Application {
                                 ProjectStaffRepository projectStaffRepo) {
     return (args) -> {
       // some persons
-      Person pers1 = new Person("Person1", "Name1", new EmailAddress("hallo1@halle.com"));
-      Person pers2 = new Person("Person2", "Name2", new EmailAddress("hallo2@halle.com"));
-      Person pers3 = new Person("Person3", "Name3", new EmailAddress("hallo3@halle.com"));
-      Person pers4 = new Person("Person4", "Name4", new EmailAddress("hallo4@halle.com"));
-      Person pers5 = new Person("Person5", "Name5", new EmailAddress("hallo5@halle.com"));
+      Person pers1 = new Person("Person1", "Name1", new EmailAddress("hallo1@hallo.com"));
+      Person pers2 = new Person("Person2", "Name2", new EmailAddress("hallo2@hallo.com"));
+      Person pers3 = new Person("Person3", "Name3", new EmailAddress("hallo3@hallo.com"));
+      Person pers4 = new Person("Person4", "Name4", new EmailAddress("hallo4@hallo.com"));
+      Person pers5 = new Person("Person5", "Name5", new EmailAddress("hallo5@hallo.com"));
 
       // some projects
       Project proj1 = new Project("Project1");

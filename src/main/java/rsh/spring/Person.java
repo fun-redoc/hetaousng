@@ -25,8 +25,8 @@ public class Person extends AbstractEntity {
   @Embedded
   private EmailAddress emailAddress;
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<Address> addresses = new HashSet<Address>();
+  @OneToMany(mappedBy="person", cascade = CascadeType.ALL, orphanRemoval = true)
+  private Set<Address> addresses; // = new HashSet<Address>();
 
   @OneToMany(mappedBy="person", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<ProjectStaff> projectStaff; 
@@ -54,10 +54,6 @@ public class Person extends AbstractEntity {
 
   }
 
-  public void addAddress(Address address) {
-    Assert.notNull(address);
-    this.addresses.add(address);
-  }
 
   public String getFirstname() {
     return firstname;
@@ -79,7 +75,11 @@ public class Person extends AbstractEntity {
     this.emailAddress = emailAddress;
   }
 
-  public Set<Address> getAddresses() {
-    return Collections.unmodifiableSet(addresses);
-  }
+//  public void addAddress(Address address) {
+//    Assert.notNull(address);
+//    this.addresses.add(address);
+//  }
+//  public Set<Address> getAddresses() {
+//    return Collections.unmodifiableSet(addresses);
+//  }
 }
